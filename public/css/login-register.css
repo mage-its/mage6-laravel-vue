@@ -1,0 +1,121 @@
+/* SETUP FONT */
+
+@font-face{
+    font-family: 'airstrike';
+    src: url('../font/airstrike.ttf');
+}
+
+@font-face{
+    font-family: 'rubik';
+    src: url('../font/Rubik-Regular.ttf');
+}
+
+*{
+    font-family: 'rubik';
+}
+
+a{
+    text-decoration: none;
+    color: #12CAD6;
+}
+
+
+.background {
+    padding-bottom: 88px;        
+}
+
+.c-nav{
+    z-index: 3;
+    background-color: white;
+    padding: 10px 35px 10px 35px;    
+}
+
+nav a{
+    color: black;
+}
+
+.navbar-brand{
+    width: 50px;
+}
+
+.t--airstrike{
+    font-family: 'airstrike';
+}
+
+/* Form */
+.form {
+    margin: 0 20px;
+    margin-top: 15vh;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 20px;
+    width: 100%;
+    z-index: 2;    
+}
+
+.header {
+    font-size: 40px;
+    margin: 30px;
+    margin-top: 0;
+    font-family: 'airstrike';
+}
+
+.form-group {
+    margin-bottom: 30px;
+}
+
+.form-control {
+    background-color: #eee;
+    border: none;
+    border-radius: 20px;
+    font-size: 1em;
+}
+
+.btn {
+    width: 50%;
+    border-radius: 20px;
+    border: none;
+    margin-bottom: 30px;
+}
+
+
+/* styling */
+.gradient-1 {
+    background: url('../img/background2.png');
+    background-size: cover;
+}
+
+.gradient-2{
+    background: url('../img/background.png');
+    background-size: cover;
+    transition: all .2s ease-in-out;
+}
+
+.gradient-2:hover{
+    transform: scale(1.03);
+}
+
+.shadow {
+    -webkit-box-shadow: 0px 0px 17px 4px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 17px 4px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 17px 4px rgba(0,0,0,0.75);
+}
+
+
+/* DESKTOP VERSION */
+
+@media (min-width: 992px) {
+    .form {
+        padding: 40px;
+    }
+}
+
+#particles{
+    position: absolute;
+    top:0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: transparent;
+    z-index: 1;
+}

@@ -1,0 +1,19 @@
+/* SETUP FONT */
+
+@font-face{
+    font-family: 'rubik';
+    src: url('../font/Rubik-Regular.ttf');
+}
+
+@font-face{
+    font-family: 'airstrike';
+    src: url('../font/airstrike.ttf');
+}
+
+*{
+    font-family: 'rubik';
+}
+
+.sidebar-brand-text{
+    font-family: 'airstrike';
+}

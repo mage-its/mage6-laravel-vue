@@ -1,0 +1,38 @@
+.bg-yellow[data-v-59403c24] {
+  background-color: #f5d300;
+}.shadow[data-v-13d17907] {
+  box-shadow: -15px 15px 0px 0px #481e7a !important;
+}
+@media (max-width: 425px) {
+.img-translate[data-v-13d17907] {
+    transform: translateX(50px);
+}
+}* {
+  box-sizing: border-box;
+}
+.bg-blue {
+  background-color: #040b21;
+}
+.bg-yellow {
+  background-color: #f5d300;
+}
+.skew {
+  transform: skewX(5deg) !important;
+  box-shadow: -15px 15px 0px 0px white !important;
+}
+.skewonly {
+  transform: skewX(5deg) !important;
+}
+.skewback {
+  transform: skewX(-5deg) !important;
+}
+.skewright {
+  transform: skewX(-15deg) !important;
+}
+.skewesport {
+  transform: skewX(5deg) !important;
+  box-shadow: -15px 15px 0px 0px black !important;
+}
+.skewesportback {
+  transform: skewX(-5deg) !important;
+}
