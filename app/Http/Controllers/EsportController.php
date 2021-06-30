@@ -38,7 +38,7 @@ class EsportController extends Controller
     {
         $timId = $request->timId;
 
-        $data = Esports::where('userid', $timId)->get()->first();        
+        $data = Esports::where('userid', $timId)->get()->first();
         // echo($data);
         User::where('id', $data->userid)->update(['daftar' => null]);
         Esports::where('userid', $timId)->delete();
@@ -97,7 +97,7 @@ class EsportController extends Controller
     //verif peserta
     public function toggleVerif(Request $request)
     {
-        $timId = $request->timId;        
+        $timId = $request->timId;
         $status = Esports::where('userid', $timId)->get(['status'])->first(); //get user verif status
         if ($status->status == false) {
             Esports::where('userid', $timId)->update(['status' => true, 'no_peserta' => $request->noPeserta]);
@@ -138,9 +138,9 @@ class EsportController extends Controller
     //User Function
     public function userIndex()
     {
-        // $user =  Auth::user();
-        // $data = Esports::where('userid', $user->id)->get()->first();
-        // return view('user.esport', ['user' => $user->name, 'data' => $data, 'id' => $user->id]);
+        $user =  Auth::user();
+        $data = Esports::where('userid', $user->id)->get()->first();
+        return view('user.esport', ['user' => $user->name, 'data' => $data, 'id' => $user->id]);
         return redirect('/closed');
     }
 
@@ -168,7 +168,7 @@ class EsportController extends Controller
         $ktpCadangan = $request->file('scan_ktpcadangan');
         $ssCadangan = $request->file('scan_sscadangan');
 
-        
+
         $namaKetua = $request->nama_tim.'-KETUA-'.$prefix.$kode->no.'.'.$ktpKetua->getClientOriginalExtension();
         // var_dump($namaKetua);
         $namaAnggota1 = $request->nama_tim.'-ANGGOTA1-'.$prefix.$kode->no.'.'.$ktpAnggota1->getClientOriginalExtension();

@@ -289,16 +289,16 @@ class OlimController extends Controller
         }
     }
 
-    public function submitSoal(Request $request){        
+    public function submitSoal(Request $request){
         Soal::create([
             'difficulty' => $request->difficulty,
             'jenis_soal' => $request->jenis_soal,
             'text_soal' => $request->text_soal,
-            'answer_soal' => $request->answer_soal,            
+            'answer_soal' => $request->answer_soal,
         ]);
         return response()->json([
-            'laravel_soals' => Soal::get()                            
-        ], Response::HTTP_OK); 
+            'laravel_soals' => Soal::get()
+        ], Response::HTTP_OK);
     }
 
     public function testOnline(){
@@ -306,15 +306,15 @@ class OlimController extends Controller
         $user_answer = UserAnswers::where('userid', $user->id)->get()->first();
         $user_score = Score::where('userid', $user->id)->get()->first();
 
-        $timenow = Carbon::now('Asia/Jakarta')->toDateTime(); 
+        $timenow = Carbon::now('Asia/Jakarta')->toDateTime();
         $time_tables = TimeTables::where([
             ['start', '<=', $timenow],
             ['end', '>=', $timenow]
-            ])->get()->first();      
-        
+            ])->get()->first();
+
         $timediff = '';
 
-        if(isset($time_tables->end) && isset($time_tables->start)){            
+        if(isset($time_tables->end) && isset($time_tables->start)){
             $timediff = Carbon::parse($timenow)->diffInSeconds($time_tables->end);
         }
         else{

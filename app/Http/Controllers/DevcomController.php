@@ -14,9 +14,9 @@ class DevcomController extends Controller
     public function userIndex()
     {
         //normal (open registration)
-        // $user =  Auth::user();
-        // $data = Devcom::where('userid', $user->id)->get()->first();
-        // return view('user.devcomp', ['user' => $user->name, 'data' => $data, 'id' => $user->id]);
+        $user =  Auth::user();
+        $data = Devcom::where('userid', $user->id)->get()->first();
+        return view('user.devcomp', ['user' => $user->name, 'data' => $data, 'id' => $user->id]);
 
 
         // close registration
@@ -85,10 +85,10 @@ class DevcomController extends Controller
                     case 1: $cabang = 'gdevs'; $prefix= 'DCG0'; break;
                     case 2: $cabang = 'adevs'; $prefix= 'DCA0'; break;
                 }
-            break;            
+            break;
         }
         // echo $cabang;
-        $kode = KodeBayar::where('name', $cabang)->get()->first();        
+        $kode = KodeBayar::where('name', $cabang)->get()->first();
         $ktpKetua = $request->file('scan_ktpketua');
         $ktpAnggota1 = $request->file('scan_ktpanggota1');
         $ktpAnggota2 = $request->file('scan_ktpanggota2');
@@ -159,20 +159,20 @@ class DevcomController extends Controller
             // 'status_bayar' => true,
         ]);
 
-        //delete files if exists        
+        //delete files if exists
         $file->move(public_path().'/abstrak/', $name);
 
         return redirect('/home');
     }
 
     public function uploadDev2(Request $request){
-        // $link_karyadanvideo = $request->link_karyadanvideo;        
+        $link_karyadanvideo = $request->link_karyadanvideo;
 
-        // Devcom::where('id', $request->data_id)->update([
-        //     'link_karya' => $link_karyadanvideo
-        // ]);
-         
-        // return redirect('/submission');
+        Devcom::where('id', $request->data_id)->update([
+            'link_karya' => $link_karyadanvideo
+        ]);
+
+        return redirect('/submission');
         return redirect('/closed');
     }
 
@@ -193,7 +193,7 @@ class DevcomController extends Controller
     //verif peserta
     public function adminVerif(Request $request)
     {
-        $timId = $request->timId;    
+        $timId = $request->timId;
         $status = Devcom::where('userid', $timId)->get(['status'])->first(); //get user verif status
         // var_dump($status);
         if ($status->status == false) {
@@ -203,12 +203,12 @@ class DevcomController extends Controller
         }
         return redirect()->back();
     }
-    
+
     public function adminHapus(Request $request)
     {
         $timId = $request->timId;
 
-        $data = Devcom::where('userid', $timId)->get()->first();        
+        $data = Devcom::where('userid', $timId)->get()->first();
         // echo($data);
         User::where('id', $data->userid)->update(['daftar' => null]);
         Devcom::where('userid', $timId)->delete();
