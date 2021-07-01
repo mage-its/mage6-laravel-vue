@@ -20,8 +20,7 @@ class CreateKodepromoTable extends Migration
             $table->integer('usage')->default(0);
             $table->enum('category', ['devcom', 'olim', 'esport', 'all'])->default('all');
             $table->integer('max')->default(100);
-            $table->enum('category', ['single', 'double'])->default('single');
-            $table->boolean('status');            
+            $table->boolean('status');
             $table->timestamps();
         });
     }
